@@ -8,6 +8,7 @@ function Home() {
     <div>
       <Toolbar />
       <span>{t("home:header.title")}</span>
+      <span>{t("home:header.testParam", { number: 100 })}</span>
     </div>
   );
 }

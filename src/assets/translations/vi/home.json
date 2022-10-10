@@ -1,5 +1,6 @@
 {
   "header": {
-    "title": "Trang chủ"
+    "title": "Trang chủ",
+    "testParam": "Test thử truyền param, đây là số {{number}}"
   }
 }

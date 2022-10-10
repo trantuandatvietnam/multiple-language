@@ -1,5 +1,6 @@
 {
   "header": {
-    "title": "Home"
+    "title": "Home",
+    "testParam": "Test params, this is {{number}}"
   }
 }
