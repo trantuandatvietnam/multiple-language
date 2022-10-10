@@ -1,0 +1,9 @@
+{
+  "logo": "Multiple Language",
+  "languageVisible": "Language",
+  "header": {
+    "home": "home",
+    "about": "about",
+    "language": "language"
+  }
+}
