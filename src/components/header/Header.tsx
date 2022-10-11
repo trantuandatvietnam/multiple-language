@@ -9,6 +9,9 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { LANGUAGE_OPTION } from "../../common/constants";
+import useToggle from "../../common/hooks/useToggle";
+import i18n from "../../ultils/i18n";
+import DialogTest from "../dialog/Dialog";
 
 const navItems = [
   {
@@ -24,7 +27,8 @@ const navItems = [
 export default function Header() {
   const { t } = useTranslation();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const openLang = Boolean(anchorEl);
+  const { isOpen, close, toggle } = useToggle();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -36,10 +40,15 @@ export default function Header() {
   const handleChangeLang = (lang: string) => {
     const currentLang = localStorage.getItem("language");
     if (!currentLang || currentLang !== lang) {
+      i18n.changeLanguage(lang);
       localStorage.setItem("language", lang);
       window.location.reload();
     }
     handleClose();
+  };
+
+  const onClickAgree = () => {
+    alert("Bạn vừa đồng ý điều khoản của chúng tôi");
   };
 
   return (
@@ -68,7 +77,7 @@ export default function Header() {
           <Menu
             id="language"
             anchorEl={anchorEl}
-            open={open}
+            open={openLang}
             onClose={handleClose}
             MenuListProps={{
               "aria-labelledby": "basic-button",
@@ -81,6 +90,15 @@ export default function Header() {
               English
             </MenuItem>
           </Menu>
+
+          <Button onClick={toggle} sx={{ color: "#fff" }}>
+            Toggle
+          </Button>
+          <DialogTest
+            onClickAgree={onClickAgree}
+            isOpen={isOpen}
+            close={close}
+          />
         </Box>
       </Toolbar>
     </AppBar>
