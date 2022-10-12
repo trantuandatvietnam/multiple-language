@@ -4,6 +4,7 @@
   "header": {
     "home": "home",
     "about": "about",
-    "language": "language"
+    "language": "language",
+    "toggle": "Toggle"
   }
 }

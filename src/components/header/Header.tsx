@@ -10,6 +10,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { LANGUAGE_OPTION } from "../../common/constants";
 import useToggle from "../../common/hooks/useToggle";
+import history from "../../services/history";
 import i18n from "../../ultils/i18n";
 import DialogTest from "../dialog/Dialog";
 
@@ -48,7 +49,7 @@ export default function Header() {
   };
 
   const onClickAgree = () => {
-    alert("Bạn vừa đồng ý điều khoản của chúng tôi");
+    alert(history.location.pathname);
   };
 
   return (
@@ -92,7 +93,7 @@ export default function Header() {
           </Menu>
 
           <Button onClick={toggle} sx={{ color: "#fff" }}>
-            Toggle
+            {t("common:header.toggle")}
           </Button>
           <DialogTest
             onClickAgree={onClickAgree}
